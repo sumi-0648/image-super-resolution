@@ -6,4 +6,6 @@ matplotlib
 scikit-image
 streamlit
 flask
-opencv-contrib-python
+opencv-contrib-python-headless
+joblib
+gunicorn
