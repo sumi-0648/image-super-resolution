@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Super Resolution | Deep Learning</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            color: #1e293b;
+        }
+
+        header {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 35px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            padding: 25px;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-card {
+            background: #f1f5f9;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .image-card img {
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+        }
+
+        .download {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 600px) {
+            .images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Image Super Resolution</h1>
+    <p>Deep Learning Based Image Enhancement</p>
+</header>
+
+<div class="container">
+
+    <h2>Upload Your Image</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="image"
+            accept=".png,.jpg,.jpeg"
+            required
+        >
+
+        <br>
+
+        <button type="submit">Enhance Image</button>
+
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if original and enhanced %}
+
+    <h2 class="success">Image Enhancement Completed!</h2>
+
+    <div class="images">
+
+        <div class="image-card">
+
+            <h3>Original Image</h3>
+
+            <img src="{{ original }}" alt="Original Image">
+
+            <p>Size: {{ original_size }}</p>
+
+        </div>
+
+        <div class="image-card">
+
+            <h3>Enhanced Image</h3>
+
+            <img src="{{ enhanced }}" alt="Enhanced Image">
+
+            <p>Size: {{ enhanced_size }}</p>
+
+            <a href="{{ enhanced }}" download="enhanced.png"
+               class="download">
+                Download Image
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<footer>
+    <p>Deep Learning Project | Image Super Resolution</p>
+</footer>
+
+</body>
+</html>

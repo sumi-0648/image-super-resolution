@@ -1,0 +1,9 @@
+torch
+torchvision
+numpy
+Pillow
+matplotlib
+scikit-image
+streamlit
+flask
+opencv-contrib-python
