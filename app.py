@@ -34,7 +34,7 @@ for folder in [MODEL_DIR, UPLOAD_DIR, RESULT_DIR]:
     folder.mkdir(parents=True, exist_ok=True)
 
 # Maximum input image dimension
-MAX_IMAGE_SIDE = 512
+MAX_IMAGE_SIDE = 128
 
 # Load the model only once
 sr_model = None
